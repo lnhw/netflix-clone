@@ -25,7 +25,7 @@ Netflix Clone is a web application that simulates Netflix's main features, inclu
 
 2. **Install dependencies (Cài đặt phụ thuộc):**
     ```bash
-    npm installư
+    npm install
     ```
 
 ## Guide 
