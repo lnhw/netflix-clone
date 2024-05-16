@@ -27,7 +27,7 @@ jobs:
 
         # Bước 4: Chạy npm i  để cài đặt
       - name: Install exact dependencies 📦
-        run: npm ci
+        run: npm i
 
       # Bước 5: Verify code quality and run tests 🛡️
       - name: Verify code quality and run tests ✅
