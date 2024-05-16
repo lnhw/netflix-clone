@@ -1,0 +1,57 @@
+name: CI/CD Pipeline 🚀
+
+# Kích hoạt workflow khi có push hoặc pull request đến nhánh dev
+on:
+  push:
+    branches: [main]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Bước 1: Checkout code từ repository
+      - name: Checkout code 📝
+        uses: actions/checkout@v2
+
+      # Bước 2: Thiết lập Docker Buildx
+      - name: Set up Docker Buildx 🛠️
+        uses: docker/setup-buildx-action@v1
+
+      # Bước 3: Cache Docker layers để tăng tốc độ build
+      - name: Cache Docker layers ⚡
+        uses: actions/cache@v2
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-
+
+        # Bước 4: Chạy npm ci để cài đặt các phiên bản phụ thuộc chính xác
+      - name: Install exact dependencies 📦
+        run: npm ci
+
+      # Bước 5: Verify code quality and run tests 🛡️
+      - name: Verify code quality and run tests ✅
+        run: |
+          # Kiểm tra cú pháp với ESLint
+          npx eslint .
+          # Chạy các bài kiểm thử đơn vị với Jest
+          npm test
+      # Bước 6: Build Docker image 🏗️
+      - name: Build Docker image 🛠️
+        run: docker build --file Dockerfile --tag nextjs-app .
+
+      # Bước 7: Run Docker Compose 🐳
+      - name: Run Docker Compose 🚀
+        run: docker-compose up -d
+      # Bước 8: Run tests in the Docker container 🔄
+      - name: Run tests 🧪
+        run: docker-compose exec app npm test
+      # Bước 9: Initialize CodeQL 🛠️
+      - name: Initialize CodeQL 🔍
+        uses: github/codeql-action/init@v1
+        with:
+          languages: javascript,typescript
+
+      # Bước 10: Perform CodeQL Analysis 📈
+      - name: Perform CodeQL Analysis 🕵️
+        uses: github/codeql-action/analyze@v1
