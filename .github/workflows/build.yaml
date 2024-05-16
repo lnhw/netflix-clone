@@ -34,11 +34,12 @@ jobs:
         run: |
           # Kiểm tra cú pháp với ESLint
           npx eslint .
-      # Bước 6: Load .env file và thiết lập các biến môi trường
-      - name: Load .env file 📄
+      # Bước 6: Load .env.local file và thiết lập các biến môi trường
+      - name: Load .env.local file 📄
         run: |
+          cp .env.local /tmp/.env.local  # Sao chép file .env.local vào thư mục tạm
           set -a
-          source .env
+          source /tmp/.env.local  # Nạp file .env.local từ thư mục tạm
           set +a
 
       # Bước 7: Build Docker image 🏗️
