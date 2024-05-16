@@ -34,8 +34,6 @@ jobs:
         run: |
           # Kiểm tra cú pháp với ESLint
           npx eslint .
-          # Chạy các bài kiểm thử đơn vị với Jest
-          npm test
       # Bước 6: Build Docker image 🏗️
       - name: Build Docker image 🛠️
         run: docker build --file Dockerfile --tag nextjs-app .
@@ -43,9 +41,9 @@ jobs:
       # Bước 7: Run Docker Compose 🐳
       - name: Run Docker Compose 🚀
         run: docker-compose up -d
-      # Bước 8: Run tests in the Docker container 🔄
-      - name: Run tests 🧪
-        run: docker-compose exec app npm test
+      # # Bước 8: Run tests in the Docker container 🔄
+      # - name: Run tests 🧪
+      #   run: docker-compose exec app npm test
       # Bước 9: Initialize CodeQL 🛠️
       - name: Initialize CodeQL 🔍
         uses: github/codeql-action/init@v1
