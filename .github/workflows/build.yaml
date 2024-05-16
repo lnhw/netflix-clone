@@ -34,17 +34,35 @@ jobs:
         run: |
           # Kiểm tra cú pháp với ESLint
           npx eslint .
-      # Bước 6: Build Docker image 🏗️
-      - name: Build Docker image 🛠️
-        run: docker build --file Dockerfile --tag nextjs-app .
+      # Bước 6: Load .env file và thiết lập các biến môi trường
+      - name: Load .env file 📄
+        run: |
+          set -a
+          source .env
+          set +a
 
-      # Bước 7: Run Docker Compose 🐳
+      # Bước 7: Build Docker image 🏗️
+      - name: Build Docker image 🛠️
+        run: |
+          docker build \
+            --file Dockerfile \
+            --tag nextjs-app \
+            --build-arg NEXT_PUBLIC_API_KEY=${NEXT_PUBLIC_API_KEY} \
+            --build-arg NEXT_PUBLIC_TMDB_URL=${NEXT_PUBLIC_TMDB_URL} \
+            --build-arg NEXT_PUBLIC_TMDB_URL_IMAGE=${NEXT_PUBLIC_TMDB_URL_IMAGE} \
+            --build-arg NEXT_PUBLIC_URL=${NEXT_PUBLIC_URL} \
+            --build-arg NEXTAUTH_SECRET=${NEXTAUTH_SECRET} \
+            --build-arg GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID} \
+            --build-arg GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET} \
+            --build-arg GITHUB_ID=${GITHUB_ID} \
+            --build-arg GITHUB_SECRET=${GITHUB_SECRET} \
+            --build-arg NEXT_SHARP_PATH=${NEXT_SHARP_PATH}
+
+      # Bước 8: Run Docker Compose 🐳
       - name: Run Docker Compose 🚀
         run: docker-compose up -d
-      # # Bước 8: Run tests in the Docker container 🔄
-      # - name: Run tests 🧪
-      #   run: docker-compose exec app npm test
-      # Bước 9: Initialize CodeQL 🛠️
+        
+      # Bước 9: Initialize CodeQL 🔍
       - name: Initialize CodeQL 🔍
         uses: github/codeql-action/init@v1
         with:
