@@ -25,7 +25,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-buildx-
 
-        # Bước 4: Chạy npm ci để cài đặt các phiên bản phụ thuộc chính xác
+        # Bước 4: Chạy npm i  để cài đặt
       - name: Install exact dependencies 📦
         run: npm ci
 
