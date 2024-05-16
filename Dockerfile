@@ -5,7 +5,7 @@ FROM node:lts-alpine AS builder
 WORKDIR /app
 
 # install dependencies
-COPY package* .json ./
+COPY package*.json ./
 
 #Copy source code
 
