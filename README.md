@@ -9,6 +9,9 @@ Netflix Clone is a web application that simulates Netflix's main features, inclu
 
 ![Netflix Clone Main Interfac3 3](./public/image/netflix_clone_interface_3.png)
 
+
+## Tech Task
+- **ReactJs, NextJs, NodeJS**
 ## Install 
 
 - **[Node.js](https://nodejs.org/):** version LTS
@@ -19,7 +22,7 @@ Netflix Clone is a web application that simulates Netflix's main features, inclu
 
 1. **Clone repository:**
     ```bash
-    git clone https://github.com/yourusername/netflix-clone.git
+    git clone https://github.com/lnhw/netflix-clone.git
     cd netflix-clone
     ```
 
