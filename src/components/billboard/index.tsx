@@ -51,7 +51,6 @@ const Billboard: React.FC<IMovie> = ({ movie, trailer }) => {
         setMuted(!muted);
     }
 
-
     return (
         <Box>
             <div className="h-full w-full">

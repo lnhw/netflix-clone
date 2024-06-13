@@ -37,21 +37,21 @@ jobs:
       # Bước 6: Export GitHub Secrets as environment variables
       - name: Export secrets as environment variables
         run: |
-          echo "NEXT_PUBLIC_API_KEY=${{ secrets.NEXT_PUBLIC_API_KEY }}" >> $GITHUB_ENV
-          echo "NEXT_PUBLIC_TMDB_URL=${{ secrets.NEXT_PUBLIC_TMDB_URL }}" >> $GITHUB_ENV
-          echo "NEXT_PUBLIC_TMDB_URL_IMAGE=${{ secrets.NEXT_PUBLIC_TMDB_URL_IMAGE }}" >> $GITHUB_ENV
-          echo "NEXT_PUBLIC_URL=${{ secrets.NEXT_PUBLIC_URL }}" >> $GITHUB_ENV
-          echo "NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }}" >> $GITHUB_ENV
-          echo "GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }}" >> $GITHUB_ENV
-          echo "GOOGLE_CLIENT_SECRET=${{ secrets.GOOGLE_CLIENT_SECRET }}" >> $GITHUB_ENV
-          echo "GITHUB_ID=${{ secrets.GITHUB_ID }}" >> $GITHUB_ENV
-          echo "GITHUB_SECRET=${{ secrets.GITHUB_SECRET }}" >> $GITHUB_ENV
-          echo "EMAIL_SERVER=${{ secrets.EMAIL_SERVER }}" >> $GITHUB_ENV
-          echo "EMAIL_FROM=${{ secrets.EMAIL_FROM }}" >> $GITHUB_ENV
-          echo "NEXT_SHARP_PATH=${{ secrets.NEXT_SHARP_PATH }}" >> $GITHUB_ENV
+          echo "NEXT_PUBLIC_API_KEY=${{ secrets.NEXT_PUBLIC_API_KEY }}" >> .env
+          echo "NEXT_PUBLIC_TMDB_URL=${{ secrets.NEXT_PUBLIC_TMDB_URL }}" >> .env
+          echo "NEXT_PUBLIC_TMDB_URL_IMAGE=${{ secrets.NEXT_PUBLIC_TMDB_URL_IMAGE }}" >> .env
+          echo "NEXT_PUBLIC_URL=${{ secrets.NEXT_PUBLIC_URL }}" >> .env
+          echo "NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }}" >> .env
+          echo "GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }}" >> .env
+          echo "GOOGLE_CLIENT_SECRET=${{ secrets.GOOGLE_CLIENT_SECRET }}" >> .env
+          echo "GITHUB_ID=${{ secrets.GITHUB_ID }}" >> .env
+          echo "GITHUB_SECRET=${{ secrets.GITHUB_SECRET }}" >> .env
+          echo "EMAIL_SERVER=${{ secrets.EMAIL_SERVER }}" >> .env
+          echo "EMAIL_FROM=${{ secrets.EMAIL_FROM }}" >> .env
+          echo "NEXT_SHARP_PATH=${{ secrets.NEXT_SHARP_PATH }}" >> .env
 
       # Bước 7: Build Docker image 🏗️
-      - name: Build Docker image 🛠️
+      - name: Build Docker image 🛠️   
         run: |
           docker build . \
            --file Dockerfile \

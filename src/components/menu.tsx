@@ -26,7 +26,6 @@ import {
 import { useSession, signIn, signOut } from "next-auth/react";
 
 const Menu = () => {
-
   const { data: session } = useSession();
 
   return (
