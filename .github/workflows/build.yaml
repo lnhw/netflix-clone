@@ -44,14 +44,14 @@ jobs:
           echo "NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }}" >> .env
           echo "GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }}" >> .env
           echo "GOOGLE_CLIENT_SECRET=${{ secrets.GOOGLE_CLIENT_SECRET }}" >> .env
-          echo "GITHUB_ID=${{ secrets.GITHUB_ID }}" >> .env
-          echo "GITHUB_SECRET=${{ secrets.GITHUB_SECRET }}" >> .env
+          echo "GITHUB_ID=${{ secrets.GH_ID }}" >> .env
+          echo "GITHUB_SECRET=${{ secrets.GH_SECRET }}" >> .env
           echo "EMAIL_SERVER=${{ secrets.EMAIL_SERVER }}" >> .env
           echo "EMAIL_FROM=${{ secrets.EMAIL_FROM }}" >> .env
           echo "NEXT_SHARP_PATH=${{ secrets.NEXT_SHARP_PATH }}" >> .env
 
       # Bước 7: Build Docker image 🏗️
-      - name: Build Docker image 🛠️   
+      - name: Build Docker image 🛠️
         run: |
           docker build . \
            --file Dockerfile \
@@ -63,8 +63,8 @@ jobs:
           --build-arg NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }} \
           --build-arg GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }} \
           --build-arg GOOGLE_CLIENT_SECRET=${{ secrets.GOOGLE_CLIENT_SECRET }} \
-          --build-arg GITHUB_ID=${{ secrets.GITHUB_ID }} \
-          --build-arg GITHUB_SECRET=${{ secrets.GITHUB_SECRET }} \
+          --build-arg GITHUB_ID=${{ secrets.GH_ID }} \
+          --build-arg GITHUB_SECRET=${{ secrets.GH_SECRET }} \
           --build-arg EMAIL_SERVER=${{ secrets.EMAIL_SERVER }} \
           --build-arg EMAIL_FROM=${{ secrets.EMAIL_FROM }} \
           --build-arg NEXT_SHARP_PATH=${{ secrets.NEXT_SHARP_PATH }}
