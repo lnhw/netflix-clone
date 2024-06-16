@@ -34,6 +34,10 @@ jobs:
         run: |
           # Kiểm tra cú pháp với ESLint
           npx eslint .
+      # Đăng nhập vào Docker Hub
+      - name: Login to Docker Hub 🐳
+        run: |
+          echo echo ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }} | docker login -u lnquang --password-stdin
       # Bước 6: Export GitHub Secrets as environment variables
       - name: Export secrets as environment variables
         run: |
