@@ -12,7 +12,7 @@ RUN npm install
 COPY . .
 
 #COPY source code vào file .env
-COPY .env.local .env
+COPY .env .env
 # #load environment variable from .env file
 # RUN export $(grep -v '^#' .env | axrgs)
 
