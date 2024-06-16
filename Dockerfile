@@ -17,7 +17,7 @@ COPY .env .env
 # RUN export $(grep -v '^#' .env | axrgs)
 
 # build app
-RUN npm run build
+RUN npm run build --verbose
 
 # Mở port 3000
 EXPOSE 3000
