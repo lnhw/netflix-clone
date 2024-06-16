@@ -6,7 +6,7 @@ WORKDIR /app
 
 # install dependencies
 COPY package*.json ./
-RUN npm install
+RUN npm install | npm install mysql2
 #Copy source code
 
 COPY . .
